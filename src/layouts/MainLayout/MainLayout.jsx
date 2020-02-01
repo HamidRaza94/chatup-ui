@@ -1,12 +1,35 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import { Heading, Login } from '../../components';
+import { ProtectedRoute, Heading } from '../../components';
+import { Login, Chat } from '../../scenes';
+import { route } from '../../config';
 
 const MainLayout = () => (
-  <Fragment>
-    <Heading />
-    <Login />
-  </Fragment>
-);
+  <Router>
+    <Switch>
+      <Route
+        exact
+        path={route.login}
+        render={(props) => (
+          <Fragment>
+            <Heading />
+            <Login {...props} />
+          </Fragment>
+        )}
+      />
+
+      <Route
+        exact
+        path={route.chat}
+        render={(props) => (
+          <ProtectedRoute {...props} component={Chat} />
+        )}
+      />
+
+      <Redirect to={route.login} />
+    </Switch>
+  </Router>
+)
 
 export default MainLayout;
