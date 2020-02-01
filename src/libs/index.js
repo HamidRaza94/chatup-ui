@@ -1,1 +1,1 @@
-export { IMAGES } from './constants';
+export { GENERAL, IMAGES } from './constants';

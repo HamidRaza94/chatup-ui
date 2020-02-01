@@ -10,7 +10,7 @@ const Heading = () => {
 
   return (
     <Grid className={classes.root} container justify="center" alignItems="center">
-      <Grid item><img src={IMAGES.logo} alt="chatUp" /></Grid>
+      <Grid item><img src={IMAGES.logo} width={50} height={50} alt="chatUp" /></Grid>
       <Grid item><Typography variant="h3" color="primary">{heading.title}</Typography></Grid>
     </Grid>
   )

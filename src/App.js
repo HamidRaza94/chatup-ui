@@ -1,13 +1,20 @@
 import React from 'react';
+import { ApolloProvider } from 'react-apollo';
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 
 import theme from './theme';
+import { SnackBarProvider } from './contexts';
+import { client } from './client';
 import { MainLayout } from './layouts';
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    <MainLayout />
+    <ApolloProvider client={client}>
+      <SnackBarProvider>
+        <MainLayout />
+      </SnackBarProvider>
+    </ApolloProvider>
   </MuiThemeProvider>
 );
 
