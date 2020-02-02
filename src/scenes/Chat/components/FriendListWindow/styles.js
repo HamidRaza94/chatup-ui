@@ -6,6 +6,7 @@ const styles = ((theme) => ({
   },
   divider: {
     background: theme.palette.primary.light,
+    marginRight: 10,
   },
 }));
 

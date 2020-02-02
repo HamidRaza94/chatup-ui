@@ -13,7 +13,7 @@ const FriendListWindow = ({ friends, selected, changeSelectedFriend }) => {
     <List className={classes.root}>
       {
         friends.map(({ id, name, conversations }) => (
-          <Fragment>
+          <Fragment key={id}>
             <Row
               name={name}
               lastMessage={conversations.length ? conversations[conversations.length - 1].message : ''}

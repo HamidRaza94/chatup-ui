@@ -87,6 +87,8 @@ const Login = ({ history, openSnackBar }) => {
     setTouch({ ...touch, [event.target.type]: true });
   }
 
+  const isError = (err) => Boolean(errors[err].length);
+
   return (
     <Grid className={classes.root} container direction="column" alignItems="center">
       <Grid className={classes.row} item md={3}>
@@ -99,7 +101,7 @@ const Login = ({ history, openSnackBar }) => {
             type="email"
             label={login.emailLabel}
             value={email}
-            error={errors.email.length}
+            error={isError('email')}
             helperText={errors.email}
             onChange={handleChange(setEmail)}
             onBlur={handleBlur}
@@ -119,7 +121,7 @@ const Login = ({ history, openSnackBar }) => {
             type="password"
             label={login.passwordLabel}
             value={password}
-            error={errors.password.length}
+            error={isError('password')}
             helperText={errors.password}
             onChange={handleChange(setPassword)}
             onBlur={handleBlur}

@@ -18,8 +18,9 @@ const Row = ({ name, lastMessage, rowNo, isClicked, handleClick }) => {
 
   return (
     <ListItem
-      className={classNames(classes.root, isClicked && classes.clicked)}
+      className={classNames(classes.root, isClicked ? classes.clicked : '')}
       onClick={() => handleClick(rowNo)}
+      key={rowNo}
     >
       <ListItemAvatar>
         {/* <StyledBadge
@@ -30,10 +31,10 @@ const Row = ({ name, lastMessage, rowNo, isClicked, handleClick }) => {
           }}
           variant="dot"
         > */}
-          <Avatar>{name.charAt(0)}</Avatar>
+          <Avatar className={isClicked ? classes.avatar : ''}>{name.charAt(0)}</Avatar>
         {/* </StyledBadge> */}
       </ListItemAvatar>
-      <ListItemText button primary={name} secondary={lastMessage} />
+      <ListItemText primary={name} secondary={lastMessage} />
       {/* <Badge badgeContent={unreadMessageCount} color="primary" /> */}
     </ListItem>
   )

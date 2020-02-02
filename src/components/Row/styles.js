@@ -45,16 +45,19 @@ const badgeStyles = {
   },
 }
 
-const styles = {
+const styles = ((theme) => ({
   root: {
     paddingRight: 30,
     cursor: 'pointer',
   },
   clicked: {
     color: '#ffffff',
-    background: '#1fbef2',
+    background: theme.palette.primary.main,
   },
-}
+  avatar: {
+    // boxShadow: '-1px -1px 2px 1px #c9c9c9, 1px 1px 2px 1px #c9c9c9',
+  },
+}))
 
 export default makeStyles(styles);
 export { badgeStyles };

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import { ProtectedRoute, Heading } from '../../components';
-import { Login, Chat } from '../../scenes';
-import { route } from '../../config';
+import { ProtectedRoute, Heading } from './components';
+import { Login, Chat } from './scenes';
+import { route } from './config';
 
-const MainLayout = () => (
+const Routes = () => (
   <Router>
     <Switch>
       <Route
@@ -22,9 +22,7 @@ const MainLayout = () => (
       <Route
         exact
         path={route.chat}
-        render={(props) => (
-          <ProtectedRoute {...props} component={Chat} />
-        )}
+        render={(props) => <ProtectedRoute {...props} component={Chat} />}
       />
 
       <Redirect to={route.login} />
@@ -32,4 +30,4 @@ const MainLayout = () => (
   </Router>
 )
 
-export default MainLayout;
+export default Routes;

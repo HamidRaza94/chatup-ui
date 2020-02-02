@@ -24,7 +24,7 @@ SnackBar.propTypes = {
   message: PropTypes.string,
   variant: PropTypes.oneOf(GENERAL.snackBarType),
   autoHideDuration: PropTypes.number,
-  anchorOrigin: PropTypes.objectOf({
+  anchorOrigin: PropTypes.shape({
     vertical: PropTypes.oneOf(['top', 'bottom']),
     horizontal: PropTypes.oneOf(['left', 'center', 'right']),
   }),

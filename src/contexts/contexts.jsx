@@ -1,9 +1,13 @@
 import { createContext } from 'react';
 
+import { GENERAL } from '../libs';
+
+const [success] = GENERAL.snackBarType;
+
 const defaultSnackBarValue = {
   open: false,
   message: '',
-  variant: '',
+  variant: success,
 }
 
 const SnackBarContext = createContext(defaultSnackBarValue);

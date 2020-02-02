@@ -5,14 +5,14 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theme from './theme';
 import { SnackBarProvider } from './contexts';
 import { client } from './client';
-import { MainLayout } from './layouts';
+import Routes from './Routes';
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <ApolloProvider client={client}>
       <SnackBarProvider>
-        <MainLayout />
+        <Routes />
       </SnackBarProvider>
     </ApolloProvider>
   </MuiThemeProvider>

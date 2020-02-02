@@ -31,7 +31,18 @@ const ConversationWindow = ({ user, conversations, updateMessage }) => {
 }
 
 ConversationWindow.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+  conversations: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+  })).isRequired,
+  updateMessage: PropTypes.func.isRequired,
 }
 
 export default ConversationWindow;

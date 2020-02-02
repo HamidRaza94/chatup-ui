@@ -6,10 +6,12 @@ import { Grid, Box } from '@material-ui/core';
 import { Header } from '../../components';
 import { FriendListWindow, ConversationWindow } from './components';
 import useStyles from './styles';
-import { withFriendsData } from '../../hoc';
+import { withFriendsData, withSnackBarConsumer } from '../../hoc';
 import { SEND_MESSAGE } from './graphQL';
+import { GENERAL, parseGQLError } from '../../libs';
 
-const Chat = ({ user, friendsData, history, subscribeToNewMessage }) => {
+const Chat = ({ user, friendsData, history, subscribeToNewMessage, openSnackBar }) => {
+  const [, error] = GENERAL.snackBarType;
   const classes = useStyles();
   const [selectedFriend, setSelectedFriend] = useState(friendsData[0].id);
   const [friends, setFriends] = useState(friendsData);
@@ -61,10 +63,12 @@ const Chat = ({ user, friendsData, history, subscribeToNewMessage }) => {
       x[index].conversations[conversationIndex].from = user.id;
       setFriends(x);
     })
-    .catch(() => {
+    .catch((err) => {
       const x = [...friends];
       x[index].conversations.splice(conversationIndex, 1);
       setFriends(x);
+      const errorMessage = parseGQLError(err);
+      openSnackBar({ message: errorMessage, variant: error });
     })
   }
 
@@ -97,12 +101,12 @@ const Chat = ({ user, friendsData, history, subscribeToNewMessage }) => {
 }
 
 Chat.propTypes = {
-  user: PropTypes.objectOf(PropTypes.shape({
+  user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-  })).isRequired,
-  friendData: PropTypes.arrayOf(PropTypes.shape({
+  }).isRequired,
+  friendsData: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -115,4 +119,4 @@ Chat.propTypes = {
   })).isRequired,
 }
 
-export default withFriendsData(Chat);
+export default withSnackBarConsumer(withFriendsData(Chat));
