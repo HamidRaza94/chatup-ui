@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import { ProtectedRoute, Heading } from './components';
-import { Login, Chat } from './scenes';
+import { Login, Chat, ChatV1 } from './scenes';
 import { route } from './config';
 
 const Routes = () => (
@@ -23,6 +23,12 @@ const Routes = () => (
         exact
         path={route.chat}
         render={(props) => <ProtectedRoute {...props} component={Chat} />}
+      />
+
+      <Route
+        exact
+        path={route.v1}
+        render={() => <ChatV1 />}
       />
 
       <Redirect to={route.login} />
