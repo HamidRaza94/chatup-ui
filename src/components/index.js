@@ -7,3 +7,4 @@ export { Header } from './Header';
 export { Error } from './Error';
 export { SnackBar } from './SnackBar';
 export { ToolTip } from './ToolTip';
+export { Logo } from './Logo';

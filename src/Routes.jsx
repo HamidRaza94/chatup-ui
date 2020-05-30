@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
+import { MainLayout } from './layout';
 import { ProtectedRoute, Heading } from './components';
 import { Login, Chat, ChatV1 } from './scenes';
 import { route } from './config';
@@ -28,7 +29,7 @@ const Routes = () => (
       <Route
         exact
         path={route.v1}
-        render={() => <ChatV1 />}
+        render={() => <MainLayout />}
       />
 
       <Redirect to={route.login} />

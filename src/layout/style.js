@@ -1,21 +1,30 @@
-export default ((theme) => ({
+export default theme => ({
   body: {
     minHeight: '100%',
     padding: 0,
     margin: 0,
   },
   wrapper: {
-    paddingTop: 60,
+    paddingTop: 64,
     position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
+
+    [theme.breakpoints.down(600)]: {
+      paddingTop: 48,
+    },
   },
   header: {
-    marginTop: -60,
-    height: 60,
+    marginTop: -64,
+    height: 64,
     backgroundColor: '#1fbef2',
+
+    [theme.breakpoints.down(600)]: {
+      marginTop: -48,
+      height: 48,
+    },
   },
   content: {
     minHeight: '100%',
@@ -27,19 +36,4 @@ export default ((theme) => ({
     left: 0,
     right: 0,
   },
-  leftContent: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    width: 400,
-    backgroundColor: '#ffffff',
-    transition: '0.3s',
-
-    [theme.breakpoints.down(500)]: {
-      width: 0,
-    },
-  },
-  rightContent: {
-    width: '100%',
-    backgroundColor: '#b3d8e3'
-  },
-}));
+});

@@ -5,7 +5,7 @@ import style from './style';
 
 const useStyles = makeStyles(style);
 
-const Chat = () => {
+const ConversationWindow = () => {
   const classes = useStyles();
 
   return (
@@ -20,4 +20,4 @@ const Chat = () => {
   )
 }
 
-export default Chat;
+export default ConversationWindow;
